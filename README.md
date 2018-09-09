@@ -6,7 +6,12 @@
 
 Simply NPM Install
 
-and start with node Server.js
+Edit Server.js SMTP Parameters to your Credentials + Provider
+Authentication=> User:Admin Password:Admin (Change in auth.js)
+
+and start with:
+
+node Server.js
 
 
 Explenation can be found here:
