@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>NodeJS Mail Sender API</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="particles-js"></div>
+        <div class="text">
+            <div id="container" align="center">
+                <div class="title-box">
+                    <h1><span>The</span> Mail Sender&nbsp;</h1>
+                    <div class="title-border title-border-left"></div>
+                    <div class="title-border title-border-right"></div>
+                </div>
+                <input id="to" type="text" placeholder="To" style="background-color: #000000; width: 185px; border-color: #515151; color: #ffffff;">
+                <input id="subject" type="text" placeholder="Subject" style="background-color: #000000; width: 184px; border-color: #515151; color: #ffffff;">
+                <br>
+                <textarea id="content" cols="40" rows="5" placeholder="Body" class="text-light shadow-lg pr-5 mt-3 bg-dark border border-light" style="background-color: #000000; border-color: #515151; color: #ffffff;"></textarea>
+                <br>
+                <input id="count" type="text" placeholder="Amount" class="bg-dark shadow mr-0 pl-0 float-none text-white offset-0 order-2 col-2 border border-light" style="margin-right: 0px; padding-right: 1px; background-color: #000000; border-color: #515151; color: #ffffff;"> 
+                <br>
+                <p><button id="send_email" class="btn mt-4 bg-dark btn-dark btn-outline-light btn-lg text-light" style="background-color: #43635b; color: #ffffff;">Send Email</button></p>
+                <span id="message"></span>
+                        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                        <script>// <![CDATA[
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val();
+        text=$("#content").val();
+        count=$("#count").val();
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text,count:count},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("Email is been sent at "+to+" . Please check inbox!");
+        }
+
+});
+    });
+});
+</script>
+            </div>
+            <h4>By <a href="https://levyt.github.io/">Tomer Levy</a></h4>
+        </div>
+        <script src='https://cldup.com/S6Ptkwu_qA.js'></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
